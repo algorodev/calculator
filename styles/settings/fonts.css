@@ -4,7 +4,7 @@
 }
 
 h4 {
-    font-size: clamp(25px, 5vw, 45px);
+    font-size: 45px;
     font-weight: 300;
     font-family: var(--screen-font);
     color: var(--primary-color);
@@ -16,7 +16,7 @@ label,
 input,
 select,
 textarea {
-    font-size: clamp(20px, 3vw, 28px);
+    font-size: 28px;
     font-weight: 300;
     font-family: var(--text-font);
     color: var(--secondary-color);

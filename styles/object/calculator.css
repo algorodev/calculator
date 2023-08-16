@@ -43,6 +43,11 @@
                 width: 18.75rem;
             }
 
+            & .control--disabled {
+                background-color: var(--light-component-color);
+                pointer-events: none;
+            }
+
             & .control:hover {
                 background-color: var(--light-component-color);
             }
