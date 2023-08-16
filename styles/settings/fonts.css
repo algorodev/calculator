@@ -1,0 +1,23 @@
+:root {
+    --screen-font: 'Share Tech Mono', monospace;
+    --text-font: 'Montserrat', sans-serif;
+}
+
+h4 {
+    font-size: clamp(25px, 5vw, 45px);
+    font-weight: 300;
+    font-family: var(--screen-font);
+    color: var(--primary-color);
+}
+
+p,
+span,
+label,
+input,
+select,
+textarea {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 300;
+    font-family: var(--text-font);
+    color: var(--secondary-color);
+}
