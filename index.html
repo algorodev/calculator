@@ -6,13 +6,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
-    <script src="index.js"></script>
     <title>Calculator</title>
 </head>
 <body>
 <section id="calculator" class="calculator">
-    <div id="screen-container" class="calculator--screen"></div>
-    <div id="controls-container" class="calculator--controls"></div>
+    <div class="calculator__screen">
+        <div id="screen" class="screen"></div>
+    </div>
+    <div class="calculator__controls">
+        <div class="controls__container">
+            <span class="control control--double">C</span>
+            <span class="control">.</span>
+            <span class="control">/</span>
+        </div>
+        <div class="controls__container">
+            <span class="control">9</span>
+            <span class="control">8</span>
+            <span class="control">7</span>
+            <span class="control">*</span>
+        </div>
+        <div class="controls__container">
+            <span class="control">6</span>
+            <span class="control">5</span>
+            <span class="control">4</span>
+            <span class="control">-</span>
+        </div>
+        <div class="controls__container">
+            <span class="control">3</span>
+            <span class="control">2</span>
+            <span class="control">1</span>
+            <span class="control">+</span>
+        </div>
+        <div class="controls__container">
+            <span class="control control--double">0</span>
+            <span class="control control--double">=</span>
+        </div>
+    </div>
 </section>
+<script src="index.js"></script>
 </body>
 </html>
