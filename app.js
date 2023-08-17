@@ -33,116 +33,26 @@ let firstNumber = ''
 let operation = ''
 let resultValue = ''
 
-nineButton.addEventListener('click', () => {
-    screenValue = screenValue + '9'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-eightButton.addEventListener('click', () => {
-    screenValue = screenValue + '8'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-sevenButton.addEventListener('click', () => {
-    screenValue = screenValue + '7'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-sixButton.addEventListener('click', () => {
-    screenValue = screenValue + '6'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-fiveButton.addEventListener('click', () => {
-    screenValue = screenValue + '5'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-fourButton.addEventListener('click', () => {
-    screenValue = screenValue + '4'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-threeButton.addEventListener('click', () => {
-    screenValue = screenValue + '3'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-twoButton.addEventListener('click', () => {
-    screenValue = screenValue + '2'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-oneButton.addEventListener('click', () => {
-    screenValue = screenValue + '1'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-zeroButton.addEventListener('click', () => {
-    screenValue = screenValue + '0'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-commaButton.addEventListener('click', () => {
-    screenValue = screenValue + '.'
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-additionButton.addEventListener('click', () => {
-    firstNumber = screenValue
-    operation = '+'
-    screenValue = ''
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-subtractionButton.addEventListener('click', () => {
-    firstNumber = screenValue
-    operation = '-'
-    screenValue = ''
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-multiplicationButton.addEventListener('click', () => {
-    firstNumber = screenValue
-    operation = '*'
-    screenValue = ''
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-divisionButton.addEventListener('click', () => {
-    firstNumber = screenValue
-    operation = '/'
-    screenValue = ''
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
-
-cleanButton.addEventListener('click', () => {
-    screenValue = ''
-    firstNumber = ''
-    operation = ''
-
-    additionButton.classList.remove('control--disabled')
-    commaButton.classList.remove('control--disabled')
-    divisionButton.classList.remove('control--disabled')
-    eightButton.classList.remove('control--disabled')
-    fiveButton.classList.remove('control--disabled')
-    fourButton.classList.remove('control--disabled')
-    multiplicationButton.classList.remove('control--disabled')
-    nineButton.classList.remove('control--disabled')
-    oneButton.classList.remove('control--disabled')
-    resultButton.classList.remove('control--disabled')
-    screen.classList.remove('control--disabled')
-    sevenButton.classList.remove('control--disabled')
-    sixButton.classList.remove('control--disabled')
-    subtractionButton.classList.remove('control--disabled')
-    threeButton.classList.remove('control--disabled')
-    twoButton.classList.remove('control--disabled')
-    zeroButton.classList.remove('control--disabled')
-
-    screen.innerHTML = `<h4>${screenValue}</h4>`
-})
+nineButton.addEventListener('click', () => addValueToScreen('9'))
+eightButton.addEventListener('click', () => addValueToScreen('8'))
+sevenButton.addEventListener('click', () => addValueToScreen('7'))
+sixButton.addEventListener('click', () => addValueToScreen('6'))
+fiveButton.addEventListener('click', () => addValueToScreen('5'))
+fourButton.addEventListener('click', () => addValueToScreen('4'))
+threeButton.addEventListener('click', () => addValueToScreen('3'))
+twoButton.addEventListener('click', () => addValueToScreen('2'))
+oneButton.addEventListener('click', () => addValueToScreen('1'))
+zeroButton.addEventListener('click', () => addValueToScreen('0'))
+commaButton.addEventListener('click', () => addValueToScreen('.'))
+additionButton.addEventListener('click', () => addOperation('+'))
+subtractionButton.addEventListener('click', () => addOperation('-'))
+multiplicationButton.addEventListener('click', () => addOperation('*'))
+divisionButton.addEventListener('click', () => addOperation('/'))
+cleanButton.addEventListener('click', () => resetCalculator())
 
 resultButton.addEventListener('click', () => {
+    if (screenValue === '' && operation === '') return
+
     switch (operation) {
         case '+':
             resultValue = addition(+firstNumber, +screenValue) + ''
@@ -158,6 +68,40 @@ resultButton.addEventListener('click', () => {
             break
     }
 
+    enableControls()
+
+    screen.innerHTML = `<h4>${resultValue}</h4>`
+})
+
+const addValueToScreen = (value) => {
+    screenValue = screenValue + value
+    screen.innerHTML = `<h4>${screenValue}</h4>`
+}
+
+const addOperation = (value) => {
+    firstNumber = screenValue
+    operation = value
+    screenValue = ''
+
+    additionButton.classList.add('control--disabled')
+    divisionButton.classList.add('control--disabled')
+    multiplicationButton.classList.add('control--disabled')
+    subtractionButton.classList.add('control--disabled')
+
+    screen.innerHTML = `<h4>${screenValue}</h4>`
+}
+
+const resetCalculator = () => {
+    screenValue = ''
+    firstNumber = ''
+    operation = ''
+
+    disableControls()
+
+    screen.innerHTML = ''
+}
+
+const enableControls = () => {
     additionButton.classList.add('control--disabled')
     commaButton.classList.add('control--disabled')
     divisionButton.classList.add('control--disabled')
@@ -175,6 +119,24 @@ resultButton.addEventListener('click', () => {
     threeButton.classList.add('control--disabled')
     twoButton.classList.add('control--disabled')
     zeroButton.classList.add('control--disabled')
+}
 
-    screen.innerHTML = `<h4>${resultValue}</h4>`
-})
+const disableControls = () => {
+    additionButton.classList.remove('control--disabled')
+    commaButton.classList.remove('control--disabled')
+    divisionButton.classList.remove('control--disabled')
+    eightButton.classList.remove('control--disabled')
+    fiveButton.classList.remove('control--disabled')
+    fourButton.classList.remove('control--disabled')
+    multiplicationButton.classList.remove('control--disabled')
+    nineButton.classList.remove('control--disabled')
+    oneButton.classList.remove('control--disabled')
+    resultButton.classList.remove('control--disabled')
+    screen.classList.remove('control--disabled')
+    sevenButton.classList.remove('control--disabled')
+    sixButton.classList.remove('control--disabled')
+    subtractionButton.classList.remove('control--disabled')
+    threeButton.classList.remove('control--disabled')
+    twoButton.classList.remove('control--disabled')
+    zeroButton.classList.remove('control--disabled')
+}
