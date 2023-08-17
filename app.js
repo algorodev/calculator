@@ -1,5 +1,6 @@
-import {addition, subtraction, multiplication, division} from './utils/operations.js'
-import {
+import {elements, operations} from './utils'
+
+const {
     additionButton,
     cleanButton,
     commaButton,
@@ -18,7 +19,14 @@ import {
     threeButton,
     twoButton,
     zeroButton
-} from './utils/elements.js'
+} = elements
+
+const {
+    addition,
+    division,
+    multiplication,
+    subtraction
+} = operations
 
 let screenValue = ''
 let firstNumber = ''
